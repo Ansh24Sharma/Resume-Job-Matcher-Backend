@@ -1,0 +1,13 @@
+mysql-connector-python
+spacy
+scikit-learn
+pandas
+pdfplumber
+numpy
+fastapi
+uvicorn
+passlib
+python-multipart
+python-jose
+pydantic
+dotenv

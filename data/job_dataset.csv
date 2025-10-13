@@ -1,0 +1,101 @@
+JobID,Title,Experience Level,Years of experience,Skills,Responsibilities,Keywords,Education
+1,Network Engineer,Senior,9,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+2,Cybersecurity Analyst,Senior,9,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+3,HR Manager,Senior,6,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+4,DevOps Engineer,Senior,4,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+5,Software Engineer,Senior,3,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+6,HR Manager,Senior,4,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+7,Financial Analyst,Senior,7,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+8,Network Engineer,Entry,9,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+9,HR Manager,Senior,7,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+10,Graphic Designer,Entry,7,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+11,Data Scientist,Mid,0,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+12,HR Manager,Entry,9,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+13,Project Manager,Mid,1,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
+14,Data Scientist,Entry,6,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+15,Data Scientist,Mid,6,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+16,Software Engineer,Senior,7,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+17,Project Manager,Entry,10,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
+18,Marketing Specialist,Senior,7,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+19,Marketing Specialist,Mid,8,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+20,DevOps Engineer,Senior,0,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+21,Project Manager,Senior,0,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
+22,Graphic Designer,Entry,10,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+23,Cybersecurity Analyst,Entry,1,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+24,Network Engineer,Entry,5,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+25,Marketing Specialist,Entry,9,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+26,Software Engineer,Entry,5,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+27,DevOps Engineer,Entry,9,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+28,Financial Analyst,Entry,5,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+29,Network Engineer,Entry,10,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+30,Network Engineer,Senior,3,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+31,Graphic Designer,Senior,5,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+32,Network Engineer,Entry,10,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+33,HR Manager,Senior,6,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+34,DevOps Engineer,Mid,8,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+35,Software Engineer,Entry,8,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+36,HR Manager,Mid,10,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+37,Software Engineer,Entry,1,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+38,Data Scientist,Senior,6,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+39,Data Scientist,Mid,2,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+40,Financial Analyst,Entry,10,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+41,Marketing Specialist,Entry,1,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+42,Data Scientist,Senior,7,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+43,Data Scientist,Entry,2,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+44,Cybersecurity Analyst,Entry,6,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+45,Financial Analyst,Entry,7,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+46,Graphic Designer,Senior,6,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+47,Software Engineer,Senior,10,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+48,Data Scientist,Mid,7,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+49,Graphic Designer,Entry,8,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+50,Cybersecurity Analyst,Entry,0,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+51,Financial Analyst,Entry,1,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+52,Data Scientist,Senior,0,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+53,Marketing Specialist,Entry,3,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+54,DevOps Engineer,Entry,5,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+55,HR Manager,Mid,5,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+56,Marketing Specialist,Mid,2,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+57,Marketing Specialist,Entry,1,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+58,Graphic Designer,Entry,5,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+59,Cybersecurity Analyst,Senior,8,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+60,Software Engineer,Senior,3,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+61,Marketing Specialist,Mid,1,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+62,Network Engineer,Entry,1,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+63,Financial Analyst,Entry,6,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+64,Cybersecurity Analyst,Senior,10,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+65,Data Scientist,Senior,0,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+66,Graphic Designer,Entry,5,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+67,HR Manager,Senior,2,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+68,Network Engineer,Entry,7,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+69,Project Manager,Senior,8,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
+70,Graphic Designer,Mid,10,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+71,Network Engineer,Senior,1,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+72,Financial Analyst,Entry,2,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+73,Project Manager,Entry,4,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
+74,Software Engineer,Mid,6,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+75,Cybersecurity Analyst,Entry,7,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+76,DevOps Engineer,Entry,1,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+77,Financial Analyst,Mid,10,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+78,Cybersecurity Analyst,Mid,8,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+79,Graphic Designer,Mid,8,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+80,Software Engineer,Mid,3,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+81,Project Manager,Mid,7,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
+82,DevOps Engineer,Mid,3,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+83,Software Engineer,Senior,8,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+84,Cybersecurity Analyst,Mid,8,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+85,Software Engineer,Senior,5,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+86,Financial Analyst,Senior,1,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+87,Graphic Designer,Entry,8,"Photoshop, Illustrator, UI/UX, Creativity","Create visual designs, branding, digital content","Design, Graphics, Creativity",Diploma Graphic Design
+88,Cybersecurity Analyst,Senior,10,"Cybersecurity, Penetration Testing, Risk Assessment","Conduct penetration testing, ensure data security","Cybersecurity, Risk, Security",M.Sc Cybersecurity
+89,Marketing Specialist,Mid,4,"SEO, Social Media, Content Writing, Google Analytics","Plan and execute digital campaigns, content optimization","Marketing, SEO, Digital",BBA Marketing
+90,Software Engineer,Mid,0,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+91,Data Scientist,Senior,1,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+92,Financial Analyst,Mid,1,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+93,HR Manager,Senior,8,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+94,DevOps Engineer,Senior,5,"AWS, Docker, Kubernetes, CI/CD","Automate cloud deployments, manage CI/CD pipelines","Cloud, Automation, DevOps",B.Tech Information Technology
+95,HR Manager,Mid,4,"Communication, Recruitment, Payroll, MS Excel","Manage HR operations, employee relations, payroll management","HR, People, Management",MBA Human Resources
+96,Financial Analyst,Entry,8,"Financial Modeling, Excel, Power BI, Accounting","Prepare financial reports, analyze budgets, support decision making","Finance, Accounting, Analyst",M.Com Finance
+97,Network Engineer,Entry,2,"Networking, Cisco, Linux, Firewall","Maintain networks, ensure uptime, troubleshoot issues","Networking, Systems, IT",B.Tech Networking
+98,Data Scientist,Entry,5,"Python, R, Machine Learning, Statistics","Analyze data, build predictive models, communicate insights","Data, ML, AI",M.Sc Data Science
+99,Software Engineer,Senior,2,"Python, Java, SQL, Git","Develop software applications, collaborate with teams, write clean code","Software, Developer, Engineer",B.Tech Computer Science
+100,Project Manager,Entry,9,"Leadership, Agile, Scrum, JIRA, Budgeting","Oversee projects, manage stakeholders, ensure delivery","Management, Agile, Scrum",MBA Project Management
