@@ -11,3 +11,4 @@ python-multipart
 python-jose
 pydantic
 dotenv
+google-generativeai

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from cors import setup_cors
 from service.db import init_db
-from routes import auth_routes, resume_routes, job_routes, recommendation_routes, dashboard_routes, user_profile_routes, candidates_routes, matches_routes
+from routes import auth_routes, resume_routes, job_routes, recommendation_routes, dashboard_routes, user_profile_routes, candidates_routes, matches_routes, chat_routes
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
@@ -31,6 +31,7 @@ app.include_router(dashboard_routes.router)
 app.include_router(user_profile_routes.router)
 app.include_router(candidates_routes.router)
 app.include_router(matches_routes.router)
+app.include_router(chat_routes.router)
 
 @app.get("/health")
 async def health_check():
