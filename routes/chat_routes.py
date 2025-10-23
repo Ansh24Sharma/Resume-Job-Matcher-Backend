@@ -152,3 +152,4 @@ IMPORTANT: Format your response using proper markdown:
         error_msg = f"Unexpected error: {str(e)}"
         print(error_msg)
         raise HTTPException(status_code=500, detail=error_msg)
+
