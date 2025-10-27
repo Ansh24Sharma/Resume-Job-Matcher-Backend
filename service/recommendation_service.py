@@ -92,8 +92,8 @@ def fetch_saved_jobs(resume_id):
         (SELECT j.id AS job_id, j.title, j.description, m.final_score,
             m.bert_score, m.skill_score, m.education_score, m.experience_score,
             m.job_source, 'jobs' as table_source, m.id as match_id,
-            j.company, j.location, NULL as job_type, j.experience,
-            NULL as salary, j.education, j.skills
+            j.company, j.location, j.job_type, j.experience,
+            j.salary, j.education, j.skills
         FROM matches m
         JOIN jobs j ON m.job_id = j.id AND m.job_source = 'jobs'
         WHERE m.resume_id = %s AND m.save_status = 'saved')
@@ -166,19 +166,23 @@ def get_top_recommendations(resume_id, top_n=5):
     # Updated UNION query to select m.id as match_id
     cursor.execute("""
     (SELECT j.id AS job_id, j.title, j.description, m.final_score,
-           m.bert_score, m.skill_score, m.education_score, m.experience_score,
-           m.job_source, 'jobs' as table_source, m.id as match_id
-    FROM matches m
-    JOIN jobs j ON m.job_id = j.id AND m.job_source = 'jobs'
-    WHERE m.resume_id = %s)
-    UNION ALL
-    (SELECT pj.id AS job_id, pj.title, pj.description, m.final_score,
-           m.bert_score, m.skill_score, m.education_score, m.experience_score,
-           m.job_source, 'posted_jobs' as table_source, m.id as match_id
-    FROM matches m
-    JOIN posted_jobs pj ON m.job_id = pj.id AND m.job_source = 'posted_jobs'
-    WHERE m.resume_id = %s)
-    ORDER BY final_score DESC
+            m.bert_score, m.skill_score, m.education_score, m.experience_score,
+            m.job_source, 'jobs' as table_source, m.id as match_id,
+            j.company, j.location, j.job_type, j.experience,
+            j.salary, j.education, j.skills
+        FROM matches m
+        JOIN jobs j ON m.job_id = j.id AND m.job_source = 'jobs'
+        WHERE m.resume_id = %s)
+        UNION ALL
+        (SELECT pj.id AS job_id, pj.title, pj.description, m.final_score,
+               m.bert_score, m.skill_score, m.education_score, m.experience_score,
+               m.job_source, 'posted_jobs' as table_source, m.id as match_id,
+               pj.company, pj.location, pj.job_type, pj.experience,
+               pj.salary, pj.education, pj.skills
+        FROM matches m
+        JOIN posted_jobs pj ON m.job_id = pj.id AND m.job_source = 'posted_jobs'
+        WHERE m.resume_id = %s)
+        ORDER BY final_score DESC
     LIMIT %s
     """, (resume_id, resume_id, top_n))
 
@@ -197,9 +201,16 @@ def get_top_recommendations(resume_id, top_n=5):
             'skill_score': row[5],
             'education_score': row[6],
             'experience_score': row[7],
-            'job_source': row[8],  # Include source info
-            'table_source': row[9], # For debugging
-            'match_id': row[10]    # Added match ID here
+            'job_source': row[8], 
+            'table_source': row[9], 
+            'match_id': row[10],
+            'company': row[11],
+            'location': row[12],
+            'job_type': row[13],
+            'experience': row[14],
+            'salary': row[15],
+            'education': row[16],
+            'skills': safe_json_loads(row[17])    
         })
     
     return recommendations
