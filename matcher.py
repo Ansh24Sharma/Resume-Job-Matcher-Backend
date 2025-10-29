@@ -95,7 +95,7 @@ def _normalize_skill_for_compare(s: str) -> str:
     return skill_map.get(normalized, normalized)
 
 def _normalize_edu_for_compare(e: str) -> Tuple[str, str, str]:
-    """Education normalizer with better parsing"""
+    """Education normalizer with strict degree hierarchy"""
     if not e or not isinstance(e, str):
         return ("", "", "")
     
@@ -104,9 +104,10 @@ def _normalize_edu_for_compare(e: str) -> Tuple[str, str, str]:
     text = re.sub(r'[^\w\s]', ' ', text)
     text = re.sub(r'\s+', ' ', text)
     
+    # Strict degree level mappings
     degree_mappings = {
-        'bachelor': ['bachelor', 'bachelors', 'btech', 'b tech', 'be', 'b e', 'bsc', 'b sc', 'ba', 'b a', 'bcom', 'b com', 'undergraduate', 'ug'],
-        'master': ['master', 'masters', 'mtech', 'm tech', 'me', 'm e', 'msc', 'm sc', 'ma', 'm a', 'mba', 'postgraduate', 'pg'],
+        'bachelor': ['bachelor', 'bachelors', 'btech', 'b tech', 'be', 'b e', 'bsc', 'b sc', 'ba', 'b a', 'bcom', 'b com', 'bba', 'bca'],
+        'master': ['master', 'masters', 'mtech', 'm tech', 'me', 'm e', 'msc', 'm sc', 'ma', 'm a', 'mba', 'mca'],
         'doctorate': ['phd', 'ph d', 'doctorate', 'doctoral'],
         'diploma': ['diploma', 'associate'],
         'certification': ['certificate', 'certification']
@@ -118,7 +119,7 @@ def _normalize_edu_for_compare(e: str) -> Tuple[str, str, str]:
         'ece': ['electronics', 'ece', 'electronics and communication', 'electronics communication', 'electrical', 'eee'],
         'mech': ['mechanical', 'mech'],
         'civil': ['civil'],
-        'business': ['business', 'management', 'mba', 'commerce', 'bba'],
+        'business': ['business', 'management', 'mba', 'bba', 'commerce', 'human resources', 'hr'],
         'science': ['science', 'physics', 'chemistry', 'mathematics', 'biology']
     }
     
@@ -143,7 +144,15 @@ def _normalize_edu_for_compare(e: str) -> Tuple[str, str, str]:
     return (degree_type, field, text)
 
 def calculate_education_similarity_enhanced(resume_edu, job_edu):
-    """Education matching with CS/IT equivalence"""
+    """
+    Education matching with strict degree and field requirements.
+    
+    Rules:
+    1. BOTH degree level AND field must match for high scores
+    2. Different degree levels (Bachelor vs Master) = low score
+    3. Different fields (CS vs Business) = low score
+    4. CS and IT are equivalent fields
+    """
     if not job_edu:
         return 1.0
     
@@ -176,30 +185,43 @@ def calculate_education_similarity_enhanced(resume_edu, job_edu):
         for j_degree, j_field, j_text in job_parsed:
             score = 0.0
             
+            # Check for exact degree level match
             degree_match = (r_degree == j_degree and r_degree != "")
-            field_match = (r_field == j_field and r_field != "")
             
-            # CS and IT are equivalent
+            # Check for field match (including CS/IT equivalence)
+            field_match = (r_field == j_field and r_field != "")
             cs_it_match = (r_field in ['cs', 'it'] and j_field in ['cs', 'it'])
             
+            # Scoring logic:
             if degree_match and (field_match or cs_it_match):
+                # Perfect match: same degree level and same field
                 score = 1.0
+            
             elif degree_match and r_field and j_field:
-                # Same degree, different field
-                score = 0.6
-            elif degree_match:
-                # Degree match only
-                score = 0.5
-            elif field_match or cs_it_match:
-                # Field match, different degree level
+                # Same degree level but different field (e.g., B.Tech CS vs B.Tech Mech)
+                score = 0.3
+            
+            elif (field_match or cs_it_match) and r_degree and j_degree:
+                # Different degree level but same field (e.g., B.Tech CS vs M.Tech CS)
+                # Give credit if resume has higher degree
+                if r_degree == 'master' and j_degree == 'bachelor':
+                    score = 0.8  # Overqualified but acceptable
+                elif r_degree == 'doctorate' and j_degree in ['bachelor', 'master']:
+                    score = 0.8  # Overqualified but acceptable
+                else:
+                    score = 0.2  # Underqualified
+            
+            elif degree_match and not r_field and not j_field:
+                # Degree match but no field information
                 score = 0.4
+            
             else:
-                # Token overlap fallback
+                # No meaningful match - use token overlap as last resort
                 r_tokens = set(re.findall(r'\b\w+\b', r_text))
                 j_tokens = set(re.findall(r'\b\w+\b', j_text))
-                if j_tokens:
+                if j_tokens and len(j_tokens) > 2:  # Only if job has meaningful tokens
                     overlap = len(r_tokens & j_tokens) / len(j_tokens)
-                    score = min(0.6, overlap)
+                    score = min(0.3, overlap)  # Cap at 0.3
             
             best_score = max(best_score, score)
     

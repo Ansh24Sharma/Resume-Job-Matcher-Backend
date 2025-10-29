@@ -62,17 +62,25 @@ async def upload_job(job: UploadFile = File(...), user: dict = Depends(get_curre
 
 
 @router.post("/postJob", response_model=JobUploadResponse)
-def post_job(job: JobPosting, user: dict = Depends(get_current_user)):
+def post_job(job: JobPosting, user: tuple = Depends(get_current_user)):
     """
     Post a new job with job type and salary information.
     This creates an entry in the posted_jobs table with all the new fields.
     For posted jobs, we use the provided entities directly instead of extracting them.
     job_source will be automatically set to 'posted_jobs'
     """
-    try:
-        # Get creator email from user
-        creator_email = user.get("email")
-        
+    user_dict = {
+        "user_id": user[0],
+        "username": user[1],
+        "email": user[2],
+        "hashed_password": user[3],
+        "role": user[4]
+    }
+
+    # Get creator email from user
+    creator_email = user_dict.get("email")
+
+    try:        
         # For posted jobs, create entities dict from provided fields directly
         entities = {
             "skills": job.skills if job.skills else [],

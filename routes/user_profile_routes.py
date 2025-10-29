@@ -84,11 +84,11 @@ async def update_my_profile(
         merged_profile = {**current_profile, **update_data}
         
         # Calculate completion percentage
-        required_fields = ["name", "email", "skills", "experience", "location"]
+        required_fields = ["name", "email", "skills", "experience", "education", "location"]
         completed_fields = 0
         
         for field in required_fields:
-            if field in ["skills", "experience"]:
+            if field in ["skills", "experience", "education"]:
                 if merged_profile.get(field) and len(merged_profile.get(field, [])) > 0:
                     completed_fields += 1
             else:

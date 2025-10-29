@@ -10,7 +10,7 @@ def get_user_profile(user_id: int):
         conn = sql.connect(**DB_CONFIG)
         cursor = conn.cursor()
         cursor.execute("""
-            SELECT id, user_id, name, email, experience, skills, location, 
+            SELECT id, user_id, name, email, experience, skills, education, location, 
                    resume_filename, resume_file_path, upload_date, completion_percentage,
                    created_at, updated_at
             FROM user_profiles 
@@ -27,13 +27,14 @@ def get_user_profile(user_id: int):
                 "email": row[3],
                 "experience": json.loads(row[4]) if row[4] else [],
                 "skills": json.loads(row[5]) if row[5] else [],
-                "location": row[6],
-                "resume_filename": row[7],
-                "resume_file_path": row[8],
-                "upload_date": row[9],
-                "completion_percentage": row[10] if row[10] is not None else 0,
-                "created_at": row[11],
-                "updated_at": row[12],
+                "education": json.loads(row[6]) if row[6] else [],
+                "location": row[7],
+                "resume_filename": row[8],
+                "resume_file_path": row[9],
+                "upload_date": row[10],
+                "completion_percentage": row[11] if row[11] is not None else 0,
+                "created_at": row[12],
+                "updated_at": row[13],
             }
         return None
     except Exception as e:
@@ -74,6 +75,12 @@ def update_user_profile(user_id: int, profile_data: dict):
             values.append(json.dumps(profile_data['skills'], ensure_ascii=False))
             resume_update_needed = True
             resume_update_data['skills'] = profile_data['skills']
+
+        if 'education' in profile_data:
+            update_fields.append("education = %s")
+            values.append(json.dumps(profile_data['education'], ensure_ascii=False))
+            resume_update_needed = True
+            resume_update_data['education'] = profile_data['education']    
             
         if 'location' in profile_data:
             update_fields.append("location = %s")
@@ -111,6 +118,10 @@ def update_user_profile(user_id: int, profile_data: dict):
             if 'experience' in resume_update_data:
                 resume_update_fields.append("experience = %s")
                 resume_values.append(json.dumps(resume_update_data['experience'], ensure_ascii=False))
+
+            if 'education' in resume_update_data:
+                resume_update_fields.append("education = %s")
+                resume_values.append(json.dumps(resume_update_data['education'], ensure_ascii=False))    
             
             if resume_update_fields:
                 resume_query = f"UPDATE resumes SET {', '.join(resume_update_fields)} WHERE user_id = %s"
@@ -136,6 +147,7 @@ def update_profile_from_resume(user_id: int, filename: str, file_path: str, enti
         
         skills_json = json.dumps(entities.get("skills", []), ensure_ascii=False)
         experience_json = json.dumps(entities.get("experience", []), ensure_ascii=False)
+        education_json = json.dumps(entities.get("education", []), ensure_ascii=False)
         upload_date = datetime.now()
         
         # Update user_profiles table
@@ -145,6 +157,7 @@ def update_profile_from_resume(user_id: int, filename: str, file_path: str, enti
                 resume_file_path = %s,
                 skills = %s,
                 experience = %s,
+                education = %s,       
                 upload_date = %s
             WHERE user_id = %s
         """, (
@@ -152,6 +165,7 @@ def update_profile_from_resume(user_id: int, filename: str, file_path: str, enti
             file_path,
             skills_json,
             experience_json,
+            education_json,
             upload_date,
             user_id
         ))
@@ -173,7 +187,7 @@ def get_all_user_profiles():
         conn = sql.connect(**DB_CONFIG)
         cursor = conn.cursor()
         cursor.execute("""
-            SELECT up.id, up.user_id, up.name, up.email, up.experience, up.skills, 
+            SELECT up.id, up.user_id, up.name, up.email, up.experience, up.skills, up.education,
                    up.location, up.resume_filename, up.upload_date, up.completion_percentage,
                    u.username, u.role
             FROM user_profiles up
@@ -192,12 +206,13 @@ def get_all_user_profiles():
                 "email": row[3],
                 "experience": json.loads(row[4]) if row[4] else [],
                 "skills": json.loads(row[5]) if row[5] else [],
-                "location": row[6],
-                "resume_filename": row[7],
-                "upload_date": row[8],
-                "completion_percentage": row[9] if row[9] is not None else 0,
-                "username": row[10],
-                "role": row[11]
+                "education": json.loads(row[6]) if row[6] else [],
+                "location": row[7],
+                "resume_filename": row[8],
+                "upload_date": row[9],
+                "completion_percentage": row[10] if row[10] is not None else 0,
+                "username": row[11],
+                "role": row[12]
             })
         return profiles
     except Exception as e:

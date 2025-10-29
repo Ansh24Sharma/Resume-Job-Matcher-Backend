@@ -9,6 +9,7 @@ class UserProfileResponse(BaseModel):
     email: Optional[str] = None
     experience: List[str] = []
     skills: List[str] = []
+    education: List[str] = []
     location: Optional[str] = None
     resume_filename: Optional[str] = None
     resume_file_path: Optional[str] = None
@@ -22,6 +23,7 @@ class UserProfileUpdate(BaseModel):
     email: Optional[EmailStr] = None
     experience: Optional[List[str]] = None
     skills: Optional[List[str]] = None
+    education: Optional[List[str]] = None
     location: Optional[str] = None
 
 class UserProfileSummary(BaseModel):

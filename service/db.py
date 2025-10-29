@@ -30,6 +30,7 @@ def init_db():
             email VARCHAR(255),
             experience JSON,
             skills JSON,
+            education JSON,
             location VARCHAR(255),
             resume_filename VARCHAR(255),
             resume_file_path VARCHAR(500),

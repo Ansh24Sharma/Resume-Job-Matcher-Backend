@@ -269,20 +269,12 @@ def update_candidate_status(candidate_id: int, new_status: str):
         current_status = current_row[0]
         
         # Update with proper timestamp logic
-        if current_status == 'available' and new_status != 'available':
+        if current_status == 'available' and new_status == 'interview_scheduled':
             cursor.execute("""
                 UPDATE candidates 
                 SET status = %s, 
                     contacted_at = CURRENT_TIMESTAMP,
-                    updated_at = CURRENT_TIMESTAMP
-                WHERE id = %s
-            """, (new_status, candidate_id))
-            
-        elif new_status == 'interview_scheduled':
-            cursor.execute("""
-                UPDATE candidates 
-                SET status = %s, 
-                    interview_scheduled_at = CURRENT_TIMESTAMP,
+                    interview_scheduled_at = CURRENT_TIMESTAMP,       
                     updated_at = CURRENT_TIMESTAMP
                 WHERE id = %s
             """, (new_status, candidate_id))
