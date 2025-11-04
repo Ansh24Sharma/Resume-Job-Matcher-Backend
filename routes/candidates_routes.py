@@ -15,7 +15,9 @@ from models.candidates_models import (
     CandidateListResponse,
 )
 from auth import get_current_user
-from email_invitation import send_interview_invitation_email
+from email_invitaions.interview_email_invitation import send_interview_invitation_email
+from email_invitaions.hiring_email_invitation import send_hiring_email
+from email_invitaions.rejection_email_invitation import send_rejection_email
 
 router = APIRouter(prefix="/candidates", tags=["Candidates"])
 
@@ -167,6 +169,7 @@ async def update_status(
             detail="Candidate not found"
         )
 
+    # Update the candidate status
     success = update_candidate_status(candidate_id, candidate_status.value)
 
     if not success:
@@ -175,11 +178,43 @@ async def update_status(
             detail="Failed to update candidate status"
         )
 
-    return {
+    # Send email based on status change
+    email_sent = False
+    if candidate_status.value.lower() == "hired":
+        email_sent = send_hiring_email(
+            candidate_email=status_update.candidate_email or candidate.get("email"),
+            candidate_name=status_update.candidate_name or candidate.get("name"),
+            recruiter_email=user_dict.get("email"),
+            recruiter_name=user_dict.get("username"),
+            company=status_update.company or candidate.get("company", "Our Company"),
+            job_title=status_update.job_title or candidate.get("job_title", "the position"),
+            additional_notes=status_update.additional_notes
+        )
+    elif candidate_status.value.lower() == "rejected":
+        email_sent = send_rejection_email(
+            candidate_email=status_update.candidate_email or candidate.get("email"),
+            candidate_name=status_update.candidate_name or candidate.get("name"),
+            recruiter_email=user_dict.get("email"),
+            recruiter_name=user_dict.get("username"),
+            company=status_update.company or candidate.get("company", "Our Company"),
+            job_title=status_update.job_title or candidate.get("job_title", "the position"),
+            additional_notes=status_update.additional_notes
+        )
+
+    response = {
         "message": "Candidate status updated successfully",
         "candidate_id": candidate_id,
         "new_status": candidate_status.value
     }
+    
+    if email_sent:
+        response["email_sent"] = True
+        response["email_message"] = f"{'Hiring' if candidate_status.value.lower() == 'hired' else 'Rejection'} email sent to candidate"
+    elif candidate_status.value.lower() in ["hired", "rejected"]:
+        response["email_sent"] = False
+        response["email_message"] = "Status updated but email failed to send"
+
+    return response
 
 @router.post("/schedule-interview")
 async def schedule_interview(

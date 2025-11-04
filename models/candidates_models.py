@@ -48,6 +48,11 @@ class CandidateDetailResponse(CandidateResponse):
 class CandidateStatusUpdate(BaseModel):
     candidate_id: int
     status: CandidateStatus
+    candidate_email: Optional[str] = None
+    candidate_name: Optional[str] = None
+    job_title: Optional[str] = None
+    company: Optional[str] = None
+    additional_notes: Optional[str] = None
 
 class InterviewScheduleRequest(BaseModel):
     candidate_id: int
