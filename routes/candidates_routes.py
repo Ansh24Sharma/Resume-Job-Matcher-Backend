@@ -15,9 +15,9 @@ from models.candidates_models import (
     CandidateListResponse,
 )
 from auth import get_current_user
-from email_invitaions.interview_email_invitation import send_interview_invitation_email
-from email_invitaions.hiring_email_invitation import send_hiring_email
-from email_invitaions.rejection_email_invitation import send_rejection_email
+from email_invitations.interview_email_invitation import send_interview_invitation_email
+from email_invitations.hiring_email_invitation import send_hiring_email
+from email_invitations.rejection_email_invitation import send_rejection_email
 
 router = APIRouter(prefix="/candidates", tags=["Candidates"])
 
