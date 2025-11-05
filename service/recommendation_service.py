@@ -326,6 +326,84 @@ def update_job_status_to_applied(match_id: int):
             'success': False,
             'message': f"Database error: {str(e)}"
         }
+    
+def update_job_status_to_closed(match_id: int):
+    """
+    Update the save_status of a match to 'closed' only if the candidate status is 'hired' or 'rejected'
+
+    Args:
+        match_id: The ID of the match to update
+
+    Returns:
+        Dictionary with success status and message
+    """
+    conn = sql.connect(**DB_CONFIG)
+    cursor = conn.cursor()
+
+    try:
+        # Verify the match exists and get the candidate status
+        cursor.execute("""
+            SELECT m.id, c.status 
+            FROM matches m
+            LEFT JOIN candidates c ON c.match_id = m.id
+            WHERE m.id = %s
+        """, (match_id,))
+        
+        match = cursor.fetchone()
+
+        if not match:
+            conn.close()
+            return {
+                'success': False,
+                'message': f"Match with ID {match_id} not found"
+            }
+
+        match_id_db, candidate_status = match
+
+        # Check if candidate exists and status is 'hired' or 'rejected'
+        if not candidate_status:
+            conn.close()
+            return {
+                'success': False,
+                'message': f"No candidate found for match ID {match_id}"
+            }
+
+        if candidate_status.lower() not in ['hired', 'rejected']:
+            conn.close()
+            return {
+                'success': False,
+                'message': f"Cannot close job. Candidate status is '{candidate_status}'. Status must be 'hired' or 'rejected' to close the job."
+            }
+
+        # Update the save_status to 'closed'
+        cursor.execute("""
+            UPDATE matches 
+            SET save_status = %s, updated_at = CURRENT_TIMESTAMP
+            WHERE id = %s
+        """, ('closed', match_id))
+
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            conn.close()
+            return {
+                'success': False,
+                'message': "No changes were made"
+            }
+
+        conn.close()
+        return {
+            'success': True,
+            'message': f"Job save status updated to 'closed' successfully (Candidate status: {candidate_status})"
+        }
+
+    except Exception as e:
+        conn.rollback()
+        conn.close()
+        return {
+            'success': False,
+            'message': f"Database error: {str(e)}"
+        }   
 
 def get_skills_based_recommendations(resume_id, top_n=5):
     """Get recommendations prioritized by skills similarity from BOTH tables"""

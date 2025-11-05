@@ -6,6 +6,7 @@ from service.candidates_service import (
     update_candidate_status,
     get_candidate_statistics
 )
+from service.recommendation_service import update_job_status_to_closed
 from models.candidates_models import (
     CandidateResponse,
     CandidateDetailResponse,
@@ -177,6 +178,12 @@ async def update_status(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to update candidate status"
         )
+
+    # Close the job if status is hired or rejected
+    if candidate_status.value.lower() in ["hired", "rejected"]:
+        if status_update.match_id:
+            update_job_status_to_closed(status_update.match_id)
+
 
     # Send email based on status change
     email_sent = False

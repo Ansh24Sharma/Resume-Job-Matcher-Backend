@@ -48,6 +48,7 @@ class CandidateDetailResponse(CandidateResponse):
 class CandidateStatusUpdate(BaseModel):
     candidate_id: int
     status: CandidateStatus
+    match_id: Optional[int] = None
     candidate_email: Optional[str] = None
     candidate_name: Optional[str] = None
     job_title: Optional[str] = None

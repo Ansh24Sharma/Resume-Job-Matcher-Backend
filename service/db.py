@@ -118,7 +118,7 @@ def init_db():
             skill_score FLOAT,
             education_score FLOAT,
             experience_score FLOAT,
-            save_status ENUM('saved', 'not_saved', 'applied') NOT NULL DEFAULT 'not_saved',
+            save_status ENUM('saved', 'not_saved', 'applied', 'closed') NOT NULL DEFAULT 'not_saved',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             FOREIGN KEY (resume_id) REFERENCES resumes(id) ON DELETE CASCADE,
