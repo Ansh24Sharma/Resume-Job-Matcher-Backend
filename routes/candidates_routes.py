@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Query
-from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, status
 from service.candidates_service import (
     get_candidates_by_recruiter,
     get_candidate_by_id,
@@ -8,7 +7,6 @@ from service.candidates_service import (
 )
 from service.recommendation_service import update_job_status_to_closed
 from models.candidates_models import (
-    CandidateResponse,
     CandidateDetailResponse,
     CandidateStatusUpdate,
     InterviewScheduleRequest,

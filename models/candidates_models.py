@@ -31,6 +31,7 @@ class CandidateResponse(BaseModel):
     skill_score: float
     education_score: float
     experience_score: float
+    save_status: str
     name: str
     email: str
     location: Optional[str] = None

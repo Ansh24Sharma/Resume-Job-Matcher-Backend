@@ -92,6 +92,7 @@ def get_candidates_by_recruiter(creator_email: str):
                 m.skill_score,
                 m.education_score,
                 m.experience_score,
+                m.save_status,
                 up.name,
                 up.email,
                 up.location,
@@ -122,8 +123,8 @@ def get_candidates_by_recruiter(creator_email: str):
 
         candidates = []
         for row in rows:
-            candidate_skills = safe_json_loads(row[19])
-            candidate_experience = safe_json_loads(row[20])
+            candidate_skills = safe_json_loads(row[20])
+            candidate_experience = safe_json_loads(row[21])
 
             candidates.append({
                 "candidate_id": row[0],
@@ -142,15 +143,16 @@ def get_candidates_by_recruiter(creator_email: str):
                 "skill_score": round(float(row[13]), 2) if row[13] else 0,
                 "education_score": round(float(row[14]), 2) if row[14] else 0,
                 "experience_score": round(float(row[15]), 2) if row[15] else 0,
-                "name": row[16],
-                "email": row[17],
-                "location": row[18],
+                "save_status": row[16],
+                "name": row[17],
+                "email": row[18],
+                "location": row[19],
                 "skills": candidate_skills,
                 "experience": candidate_experience,
-                "resume_filename": row[21],
-                "upload_date": row[22],
-                "job_title": row[23],
-                "company": row[24]
+                "resume_filename": row[22],
+                "upload_date": row[23],
+                "job_title": row[24],
+                "company": row[25]
             })
 
         return candidates
